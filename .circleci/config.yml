@@ -68,8 +68,8 @@ jobs:
     docker:
       - image: circleci/python:3.6.3
     environment:
-      S3_BUCKET_NAME: <YOUR BUCKET>-staging
-      CLOUD_FRONT_DIST_ID: <YOUR STAGING CLOUDFRONT ID>
+      S3_BUCKET_NAME: arn:aws:s3:::phambatrungthanh.com--staging
+      CLOUD_FRONT_DIST_ID: E1ON3VTJFQOC4K
     steps:
       - attach_workspace:
           at: ./
@@ -82,8 +82,8 @@ jobs:
     docker:
       - image: circleci/python:3.6.3
     environment:
-      S3_BUCKET_NAME: <YOUR BUCKET>--prod
-      CLOUD_FRONT_DIST_ID: <YOUR PROD CLOUDFRONT ID>
+      S3_BUCKET_NAME: arn:aws:s3:::phambatrungthanh.com--production
+      CLOUD_FRONT_DIST_ID: E1X2BNLOASIC7D
     steps:
       - attach_workspace:
           at: ./
