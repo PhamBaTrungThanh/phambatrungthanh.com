@@ -28,6 +28,18 @@ references:
       command: |
         aws cloudfront create-invalidation --distribution-id "$CLOUD_FRONT_DIST_ID" --paths '/*'
 jobs: 
+  install_node_dependencies:
+    <<: *defaults
+    docker:
+      - image: circleci/node
+    steps:
+      - run:
+          name: Install npm
+          command: npm install
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - node_modules
   build:
     <<: *defaults
     docker:
@@ -35,6 +47,8 @@ jobs:
     environment:
       BUNDLE_PATH: ~/repo/vendor/bundle
     steps:
+      - attach_workspace:
+          at: ./
       - checkout
       - restore_cache:
           keys:
@@ -93,7 +107,7 @@ jobs:
       - *clear_cloudfront_cache
 workflows:
   version: 2
-  test-deploy:
+  deploy:
     jobs:
       - build
       - deploy_staging:
