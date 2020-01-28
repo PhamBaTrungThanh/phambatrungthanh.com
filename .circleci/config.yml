@@ -39,8 +39,7 @@ jobs:
           command: npm install
       - persist_to_workspace:
           root: ./
-          paths:
-            - node_modules
+
   build:
     <<: *defaults
     docker:
@@ -50,7 +49,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
-      - checkout
       - restore_cache:
           keys:
             - rubygems-v1-{{ checksum "Gemfile.lock" }}
