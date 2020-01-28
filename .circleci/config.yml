@@ -33,6 +33,7 @@ jobs:
     docker:
       - image: circleci/node
     steps:
+      - checkout
       - run:
           name: Install npm
           command: npm install
@@ -110,7 +111,9 @@ workflows:
   deploy:
     jobs:
       - install_node_dependencies
-      - build
+      - build:
+          requires:
+            - install_node_dependencies
       - deploy_staging:
           requires:
             - build
