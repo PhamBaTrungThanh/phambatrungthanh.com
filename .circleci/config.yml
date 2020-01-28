@@ -31,7 +31,7 @@ jobs:
   install_node_dependencies:
     <<: *defaults
     docker:
-      - image: circleci/node
+      - image: circleci/node:12.4.1
     steps:
       - checkout
       - run:
@@ -39,7 +39,8 @@ jobs:
           command: npm install
       - persist_to_workspace:
           root: ./
-          path: node_modules
+          path: 
+            - node_modules
 
   build:
     <<: *defaults
