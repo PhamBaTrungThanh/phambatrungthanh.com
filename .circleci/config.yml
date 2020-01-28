@@ -39,6 +39,7 @@ jobs:
           command: npm install
       - persist_to_workspace:
           root: ./
+          path: node_modules
 
   build:
     <<: *defaults
@@ -47,6 +48,7 @@ jobs:
     environment:
       BUNDLE_PATH: ~/repo/vendor/bundle
     steps:
+      - checkout
       - attach_workspace:
           at: ./
       - restore_cache:
