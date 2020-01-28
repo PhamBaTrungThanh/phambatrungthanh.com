@@ -109,6 +109,7 @@ workflows:
   version: 2
   deploy:
     jobs:
+      - install_node_dependencies
       - build
       - deploy_staging:
           requires:
