@@ -1,6 +1,10 @@
+// purgecss.config.js
+
 module.exports = {
-    content: ["./_site/**/*.html"],
-    css: ["./_site/assets/css/tailwind.css"],
-    // Tailwind CSS config
-    defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-}
+  // These are the files that Purgecss will search through
+  content: ["./_site/**/*.html"],
+
+  // These are the stylesheets that will be subjected to the purge
+  css: ["./_site/css/tailwind.css"],
+  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+};
