@@ -30,3 +30,4 @@ jobs:
           publish_dir: ./public
           external_repository: phambatrungthanh/phambatrungthanh.github.io
           cname: phambatrungthanh.com
+          publish_branch: master
