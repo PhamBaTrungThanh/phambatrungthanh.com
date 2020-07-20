@@ -16,10 +16,5 @@
       "style": "monokai",
       "tabWidth": 4
     }
-  },
-  "module": {
-    "imports": {
-      "path": "github.com/knadh/hugo-ink"
-    }
   }
 }
